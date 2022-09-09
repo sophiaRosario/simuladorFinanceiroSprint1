@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcule Aqui!</title>
+</head>
+<body>
+    <h1>Calculadora Financeira da Fleming</h1>
+
+    Informe o valor da caixa de comprimidos:<input id="ipt_valor_caixa" 
+                                               placeholder="Consideramos uma caixa de 28 comprimidos" 
+                                               style="width: 300px;">
+    <br/>
+
+    Informe a quatidade de comprimidos: <input id="ipt_quantidade">
+    <br/>
+
+    Informe o tipo do comprimido: <input id="ipt_tipo" 
+                                     placeholder="Oxicodona, Metadona ou Hidromorfona"
+                                     style="width: 250px">
+    <br/>
+
+    <button onclick="Calcular()">Calcular</button>
+
+    <div id="resultado">
+</html>
+<script>
+    function Calcular() {
+        var valorCaixa = ipt_valor_caixa.value;
+        var qtdComprimido = ipt_quantidade.value;
+        var tipoComprimido = ipt_tipo.value;
+        var custoProducao = 0;
+        var faturamento = 0;
+        var lucro = 0;
+        var lucroSolucao = 0;
+        var oxicodona = 0.38;
+        var metadona = 0.46;
+        var hidromorfona = 0.67;
+
+        if (tipoComprimido == 'Oxicodona') {
+            custoProducao = oxicodona * qtdComprimido;
+            faturamento = (Number(qtdComprimido) / 28) * Number(valorCaixa);
+            lucro = faturamento - custoProducao;
+            lucroSolucao = lucro * 1.15;
+            resultado.innerHTML = `<br>Custo da sua produção será de: R$${custoProducao.toFixed(2)}
+                                    <br>Seu faturamento atual: R$${faturamento.toFixed(2)}
+                                    <br>Seu lucro sem a nossa solução: R$${lucro.toFixed(2)}
+                                    <br><b>Seu lucro com a nossa solução: R$${lucroSolucao.toFixed(2)}</b>`;
+        }
+
+        else if (tipoComprimido == 'Metadona') {
+                custoProducao = metadona * qtdComprimido;
+                faturamento = (Number(qtdComprimido) / 28) * Number(valorCaixa);
+                lucro = faturamento - custoProducao;
+                lucroSolucao = lucro * 1.15;
+                resultado.innerHTML = `<br>Custo da sua produção será de: R$${custoProducao.toFixed(2)}
+                                       <br>Seu faturamento atual: R$${faturamento.toFixed(2)}
+                                       <br>Seu lucro sem a nossa solução: R$${lucro.toFixed(2)}
+                                       <br><b>Seu lucro com a nossa solução: R$${lucroSolucao.toFixed(2)}</b>`;
+        } 
+        
+        else if (tipoComprimido == 'Hidromorfona') {
+                   custoProducao = hidromorfona * qtdComprimido;
+                   faturamento = (Number(qtdComprimido) / 28) * Number(valorCaixa);
+                   lucro = faturamento - custoProducao;
+                   lucroSolucao = lucro * 1.15;
+                   resultado.innerHTML = `<br>Custo da sua produção será de: R$${custoProducao.toFixed(2)}
+                                          <br>Seu faturamento atual: R$${faturamento.toFixed(2)}
+                                          <br>Seu lucro sem a nossa solução: R$${lucro.toFixed(2)}
+                                          <br><b>Seu lucro com a nossa solução: R$${lucroSolucao.toFixed(2)}</b>`;
+        }
+        else{
+            alert("Não trabalhamos com esse tipo de comprimido! Insira no campo tipo de comprimido: Oxicodona, Metadona ou Hidromorfona");
+        }
+        
+    }
+
+</script>
